@@ -1,0 +1,21 @@
+.container_feedback{
+    gap: 5em;
+    padding: 10px;
+    background-color: #eee;
+    border: 2px outset;
+    border-image: linear-gradient(to right , green, gold)1;
+    margin: 5px 10px;
+}
+.container_feedback p{
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-size: 1em;
+}
+.alert{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}

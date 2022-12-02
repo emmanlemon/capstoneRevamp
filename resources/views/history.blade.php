@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url("../images/sepnas_logo.png") }}" />
     <title>Speaker Eugenio Perez National Agricultural School</title>
-    @vite('resources/css/app.css')
 </head>
 @extends('Components.Molecule.header')
 @section('header')

@@ -1,0 +1,125 @@
+.container2{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.container2_box{
+	display: grid;
+	place-items: center;
+	margin-bottom: 5px;
+	padding: 10px;
+	margin: 20px;
+	background-color: white;
+}
+.container2_box>*{
+	padding:0;
+	margin: 0;
+}
+.container2_box .title{
+	font-size: 1.3em;
+	border-bottom: 3px outset;
+	border-image: linear-gradient(to right, green ,gold) 1;
+	margin: 10px;
+}
+.container2_box img {
+	border-radius: 10px;
+	margin-bottom: 5px;
+	width: 100%;
+	height: 300px;
+}
+.container2_box a{
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-decoration: none;
+	background-color: green;
+	box-shadow: 1px 1px 1px white, 1.5px 1.5px 1.5px black; 
+	color:white;
+	padding:10px 20px;
+}
+/* vmgo */
+.container_vmgo{
+	display: grid;
+    grid-template-columns: repeat(2,50% ,50%);
+    grid-auto-columns: minmax(100px, auto);
+}
+.single_sidebar{
+	width: 100%;
+	margin: 1%;
+	border-bottom: 2px outset;
+	border-image: linear-gradient(to right, green, rgb(119, 101, 0)) 1;
+}
+.title_vmgo{
+	letter-spacing: 1px;
+	text-shadow: 1px 1px 1px white;
+	background-image:linear-gradient(180deg , rgba(0, 128, 0, 0.526) , rgba(255, 217, 0, 0.504));
+	padding: .5%;
+	box-shadow: 1px 1px 1px black;
+}
+.single_sidebar{
+	padding: .5%;
+	margin: 1%;
+	margin: auto;
+	width: 80%;
+}
+.single_sidebar h2{
+	padding: 5px;
+	text-align: center;
+}
+/* choose sepnas */
+.container_choose{
+	background-color:rgba(252, 252, 252, 0.897);
+	padding: 10px;
+  }
+  .title_area{
+	display: grid;
+	place-items: center;
+	text-align: center;
+	margin: .5%;
+  }
+  .title_area p{
+	font-size: 3em;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px rgb(0, 255, 0) ,2px 2px 2px rgb(252, 235, 0);
+	padding: 1.5%;
+	border-bottom: 2px outset;
+	border-image: linear-gradient(to right, green, rgb(119, 101, 0)) 1;
+  }
+  .title_area span{
+	background-color: red;
+  }
+  .row{
+	display: flex;
+	flex:wrap;
+	flex-direction: row;
+  }
+  .choose_sepnas{
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .container_icon h3{
+	font-weight: 800;
+  }
+  .whyus_icon span{
+	color: white;
+	font-size: 4em;
+	border-radius: 50%;
+	padding: 40px;
+	margin: 2px;
+	background-image: linear-gradient(180deg, green, gold);
+	transition: 400ms ease-in-out;
+  }
+  .container_icon{
+	align-items: center;
+	text-align: center;
+  }
+  .icon:hover{
+	transform: scale(.89);
+  }
+  .data_feedback img{
+   width: 200px;
+   height: 200px;
+}
+.data_feedback img:hover{
+    transform: scale(1.1);
+}
