@@ -18,8 +18,8 @@
     @endsection
     <div class="section">
       <div class="header">
-        <p>Home > Achievements</p>
-        <button class="button" id="myBtn">Add Achievements</button>
+        <p>Home > Upcoming Events</p>
+        <button class="button" id="myBtn">Add Upcoming Events</button>
           @extends('Components.Organism.FormEventsModal')
           @section('formModal')
           @endsection
@@ -31,7 +31,7 @@
       @endif
       @foreach ($bulletinNav as $achievement)
       <div class="data_feedback"> 
-        <img src="{{ URL::asset('images/Admin/Bulletin/Achievement/'.$achievement->thumbnailImage) }}" alt="">
+        <img src="{{ URL::asset('images/Admin/Bulletin/Upcoming_events/'.$achievement->thumbnailImage) }}" alt="">
           <div class="data_container">
             <p>Title: {{ $achievement->title }}</p>
             <p>Description: {{ $achievement->shortDescription }}</p> 

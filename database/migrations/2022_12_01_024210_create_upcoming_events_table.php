@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('upcoming_events', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('shortDescription');
+            $table->text('fullDescription');
+            $table->string('header');
+            $table->string('date');
+            $table->string('thumbnailImage');
+            $table->string('fullImage');
             $table->timestamps();
         });
     }

@@ -9,7 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url("../images/sepnas_logo.png") }}" />
-    <title>Speaker Eugenio Perez National Agricultural School</title>
+    <link rel="stylesheet" href="{{ url('css/postLayout.css') }}">
+    <title>Sepnas History</title>
 </head>
 @extends('Components.Molecule.header')
 @section('header')
@@ -17,7 +18,7 @@
 <body>
     <img src="https://static.wixstatic.com/media/61cf76_06d95143c1804568a8f18c5fde558d20~mv2.jpg/v1/fill/w_726,h_502,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/20900836_110551886318419_244499528606436.jpg" alt="" class="w-full" style="height: 450px;">
         <div class="about">
-            <h6 class="text-4xl font-bold underline">BRIEF SEPNAS HISTORY</h6>
+            <h4 class="text-4xl font-bold underline">BRIEF SEPNAS HISTORY</h4>
             <p><tab>In consonance with the educational policy of the early American rule the 1900’s, a primary school was established in order to give a better educational opportunity to the people of San Carlos Rural High School. The school was first housed in provincial building in Cava St. but was later transferred to the Tribunal Building, former Presidencia (now the City Hall) where classes held up to 1915. Seeing the need for a vocational school to exploit the vast virgin natural resources, the Philippine Legislature changed the name of the school which was then called the Sac Carlos Farm School in 1914. The government bought out of the educational appropriation of thirteen and a half first class land in Salcedo St. (now Roxas Blvd.).
      
     

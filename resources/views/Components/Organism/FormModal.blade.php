@@ -52,8 +52,5 @@
   </div>
 </div>
 <script src={{ url('js/modal.js') }}>
-  var dt = new Date();
-  document.getElementById('date-time').innerHTML=dt;
-  alert(dt);
 </script>
 @yield('FormModal')

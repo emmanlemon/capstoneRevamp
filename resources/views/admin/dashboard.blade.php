@@ -1,18 +1,3 @@
-<?php 
-// session_commit();
-// session_start();
-
-// if(isset($_SESSION['id'])) 
-// {
-// include "../connection/db_conn.php";
-// $tryid = $_SESSION['id'];
-// $result6 = mysqli_query($db, "SELECT * FROM users WHERE id='$tryid'");
-//     while ($row1 = mysqli_fetch_array($result6)) 
-//         {
-//               $username = $row1['username'];   
-//         }
-?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +14,8 @@
     @section('navigator_side')
     @endsection
 <div class="section">
-    <p>{{ Session::token() }}</p>
+
 </div>
 </body>
 </html>
-<?php 
-// }
-// else{
-//      header("Location: ../login.php");
-//      exit();
-// }
- ?>
+

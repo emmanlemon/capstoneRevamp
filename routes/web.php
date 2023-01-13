@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
-// use App\Http\Controllers\Admin\Bulletin\AchievementController;
-// use App\Http\Controllers\Admin\Bulletin\AnnouncementController;
-// use App\Http\Controllers\Admin\Bulletin\NewsController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AcademicController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\BulletinController;
+use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\PollController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,23 +28,22 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('home', [HomeController::class, 'index']);
-    Route::group(['name' => 'admin.', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::view('/', 'admin.dashboard')->name('dashboard');
-        Route::resource('/contact',ContactController::class);
-    });
+    Route::get('/home', [HomeController::class, 'index'])->name('home.admin');
+    Route::get('/admin/{pages}' , [PagesController::class , 'index'])->name('pages');
+    Route::get('/admin/poll/create/{poll?}' , [PollController::class, 'show'])->name('poll');
     Route::resource('/admin/bulletin', BulletinController::class);
+    Route::post('/admin/bulletin/{bulletin}', [BulletinController::class , 'store']);
     Route::delete('/admin/bulletin/{bulletin}/{id?}' , [BulletinController::class , 'destroy'])->name('delete');
-    // Route::prefix('/admin/bulletin')->group(function(){
-    //     Route::resource('achievements', AchievementController::class);
-    //     Route::resource('announcements' , AnnouncementController::class);
-    //     // Route::resource('events', UpcomingEventController::class);
-    //     Route::resource('news', NewsController::class);
-    // });
 });
 
+    Route::get('/poll/{poll}', [PollController::class,'show'])->name('poll.show');
+    Route::post('/bulletin/{bulletin}/{id?}',[CommentController::class , 'store'])->name('comment');
+    Route::post('/poll/{poll}/vote', [PollController::class,'vote'])->name('poll.vote');
 
+    Route::post('/admin/contact' , [ContactController::class, 'store']);
     Route::get('/', [HomeController::class, 'indexShow'])->name('home');
     Route::get('/bulletin/{bulletin}/{id?}' , [HomeController::class, 'bulletins'])->name('bulletin');
-    Route::view('/history', 'history')->name('history');
+    Route::get('/aboutus/{pages}' , AboutUsController::class)->name('aboutus');
+    Route::get('/academic/{pages}' , AcademicController::class)->name('academics');
     Route::view('/contactus', 'contactus');
+

@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <p>hi</p>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+    @extends('Components.Organism.PollModal')
+    @section('poll')
+    @endsection
 </body>
 </html>

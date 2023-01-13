@@ -50,7 +50,7 @@
         <div style="float:right; padding-right: 10px">
           {{ $bulletinNav->links() }}
         </div>  
-  </div>    
+  </div> 
 <script>
 $(document).ready(function() {
   

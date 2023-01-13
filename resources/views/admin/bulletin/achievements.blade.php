@@ -39,7 +39,7 @@
           </div>
           
         <div class="deleteButton">
-          <form action='{{ route('delete' , "achievements/$achievement->id") }}' method="post">
+            <form action='{{ route('delete' , "achievements/$achievement->id") }}' method="post">
             <input class="btn btn-default" type="submit" value="Delete" />
             @method('delete')
             @csrf

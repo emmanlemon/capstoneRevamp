@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Contact;
+use Carbon\Carbon;
 
 
 class ContactController extends Controller
@@ -16,6 +17,7 @@ class ContactController extends Controller
      */
     public function index()
     {
+        
         $contact = DB::table('contacts')->latest()->paginate(10);
         return view('admin.feedback', [
             'contact' => $contact

@@ -8,8 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
-    <title>Speaker Eugenio Perez National Agricultural School</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url("../images/sepnas_logo.png") }}" />
+    <link rel="stylesheet" href="{{ url('css/index.css') }}">
+    <title>Sepnas Contact Us</title>
     @extends('Components.Molecule.header')
     @section('header')
     @endsection
@@ -27,52 +28,61 @@
                        </div>
                      </div>
                   </div>
-                  <input type="hidden" id="csrf" value={{ csrf_token() }}>
-                 <label for="name">Name: </label>
-                 <input id="name" name="name" required="" placeholder="Full Name">
-               
-                     <label for="name">Subject: </label>
-                 <input id="subject" name="subject" required="" placeholder="Subject">
-               </fieldset>
-               <fieldset class="pure-group">
-                 <label for="message">Message: </label>
-                 <textarea id="message" name="message" rows="10" required="" placeholder="Tell us what's on your mind..."></textarea>
-               </fieldset>
-               
-               <fieldset class="pure-group">
-                 <label for="email"><em>Your</em> Email Address:</label>
-                 <input id="email" name="email" type="email" value="" required="" placeholder="example@email.com">
-                 <span id="email-invalid" style="display:none">
-                   Must be a valid email address</span>
-               </fieldset>
-             
-             <fieldset class="pure-group">
-                 <label for="recipient">Recipient: <em>(choose the right recipient)<em></em></em></label><em><em>
-               <select id="recipient" name="recipient" required="">
-               <option value=""></option>
-              
-               <option value="admin">Administration</option>
-               <option value="registrar">Registrar</option>
-               <option value="BO">Business Office</option>
-               </select>
-               </em></em></fieldset><em><em>
-           
-               <button class="button-success pure-button button-xlarge btn-submit " id="save">
-                 <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
-             
-           
-               <!--=========== END CONTACT SECTION ================-->
+                  <form action="" id="form">
+                    <input type="hidden" id="csrf" value={{ csrf_token() }}>
+                    <label for="name">Name: </label>
+                    <input id="name" name="name" required="" placeholder="Full Name">
+                  
+                        <label for="name">Subject: </label>
+                    <input id="subject" name="subject" required="" placeholder="Subject">
+                  </fieldset>
+                  <fieldset class="pure-group">
+                    <label for="message">Message: </label>
+                    <textarea id="message" name="message" rows="10" required="" placeholder="Tell us what's on your mind..."></textarea>
+                  </fieldset>
+                  
+                  <fieldset class="pure-group">
+                    <label for="email"><em>Your</em> Email Address:</label>
+                    <input id="email" name="email" type="email" value="" required="" placeholder="example@email.com">
+                    <span id="email-invalid" style="display:none">
+                      Must be a valid email address</span>
+                  </fieldset>
                 
-               </em></em>
+                <fieldset class="pure-group">
+                    <label for="recipient">Recipient: <em>(choose the right recipient)<em></em></em></label><em><em>
+                  <select id="recipient" name="recipient" required="">
+                  <option value=""></option>
+                 
+                  <option value="admin">Administration</option>
+                  <option value="registrar">Registrar</option>
+                  <option value="BO">Business Office</option>
+                  </select>
+                  </em></em></fieldset><em><em>
+              
+                  <button class="button-success pure-button button-xlarge btn-submit " id="save">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+                
+              
+              
+                  <!--=========== END CONTACT SECTION ================-->
+                   
+                  </em></em>
+                  <div class="alert alert-success" role="alert" id="successMsg" style="display: none ; margin-top : 5px;" >
+                   Thank you for getting in touch! 
+                 </div>
+                  </form>
+                  
     </div>
     <div class="contact_address" >
         <div class="col-lg-4 col-md-4 col-sm-4" style="width: 60%; padding: 8%;">
             <div class="contact_address wow fadeInRight">
               <h3 class="title">Address</h3>
               <div class="address_group">
-                <p>Dr. Martin P. Posadas Avenue, San Carlos City, 2420 Pangasinan, Philippines</p>
-                <p>Tel nos. (+6375) 532 – 8888; (+6375) 532 – 9999; (+6375) 632 – 4094; (+6375) 532 – 3642<br> Fax No.: (+6375) 203 – 0333</p>
-                <p>Email:&nbsp; admin@vmuf.edu.ph<br>
+                <p>Roxas Boulevard, San Carlos City, 2420, Pangasinan</p>
+                <p>Tel nos. (075) 523 0562  
+                  (075) 955 5258
+                  <br> Fax No.: (+6375) 203 – 0333</p>
+                <p>Email:&nbsp; 300388@deped.gov.ph<br>
                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; registrar@vmuf.edu.ph<br>
                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; businessoffice@vmuf.edu.ph
                 </p>
@@ -97,16 +107,56 @@
       </div>
       
       <script>
-          $(document).ready(function() {
+        //   $(document).ready(function() {
             
-            $('#save').on('click', function() {
+        //     $('#save').on('click', function() {
+        //       var name = $("input[name=name]").val();
+        //       var subject = $("input[name=subject]").val();
+        //       var message = $("textarea[name=message]").val();
+        //       var email = $("input[name=email]").val();
+        //       var recipient = $("select[name=recipient]").val();
+        //       var url = '{{ url('contactus/store') }}';
+        //           $.ajax({
+        //               url: "/admin/contact",
+        //               type: "POST",
+        //     data:{
+        //         _token: $("#csrf").val(),
+        //         name:name, 
+        //         subject:subject,
+        //         message:message,
+        //         email:email,
+        //         recipient:recipient
+        //         },
+        //               cache: false,
+        //               success: function(dataResult){
+        //                   var dataResponse = JSON.stringify(dataResult);
+        //                   if(dataResult.success == true){
+        //                     $('#successMsg').show();	
+        //                   }
+        //                   else if(dataResult.success != true){
+        //                       alert("Error occured !");
+        //                   }     
+        //               }
+        //           });
+        //   })
+        // });
+
+        function validateForm()
+{
               var name = $("input[name=name]").val();
               var subject = $("input[name=subject]").val();
               var message = $("textarea[name=message]").val();
               var email = $("input[name=email]").val();
               var recipient = $("select[name=recipient]").val();
-              var url = '{{ url('contactus/store') }}';;
-                  $.ajax({
+              var url = '{{ url('contactus/store') }}';
+    if (name==null || name=="",subject==null || subject=="",message==null || message=="",email==null || email=="")
+    {
+        alert("Please Fill All Required Field");
+        return false;
+    }
+    else{
+
+      $.ajax({
                       url: "/admin/contact",
                       type: "POST",
             data:{
@@ -120,16 +170,28 @@
                       cache: false,
                       success: function(dataResult){
                           var dataResponse = JSON.stringify(dataResult);
-                          if(dataResponse.success == true){
-                            alert("Form Sent Successfully");	
+                          if(dataResult.success == true){
+                            $('#successMsg').show();	
                           }
-                          else if(dataResult.statusCode==201){
+                          else if(dataResult.success != true){
                               alert("Error occured !");
                           }     
                       }
                   });
-          })
-        });
+
+    }
+}
+
+  $(function () {
+
+    $('#form').on('submit', function (e) {
+      e.preventDefault();
+
+      validateForm();
+
+
+    });
+  });
       </script>
     </body>
 </html>

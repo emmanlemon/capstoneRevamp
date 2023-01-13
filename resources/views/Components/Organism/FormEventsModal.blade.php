@@ -11,6 +11,8 @@
           </div>
       
           <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf">
+          <input type="hidden" name="created_at" value="{{ date("Y/m/d H:i:s");  }}">
+          <input type="hidden" name="updated_at" value="{{ date("Y/m/d H:i:s");  }}">
           <div class="form-group">
             <label>Title:</label>
             <input type="text" name="title" class="form-control" placeholder="Enter Title" required>

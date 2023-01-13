@@ -6,62 +6,68 @@
         <div class="sidebar">
         <div class="profile">
             <img src="{{ url("../images/sepnas_logo.png") }}" alt="" style="width:100px; height:100px;">
-                <h3>Speaker Eugenio Perez National Agricultural School</h3>
+                <p style="font-size: 1.5em;">Speaker Eugenio Perez National Agricultural School</p>
                 <p>Admin Page</p>
             </div>
             <ul>
                 <li>
-                    <a href="{{ url('/admin') }}">
+                    <a href="{{ route('pages' , 'dashboard') }}">
                         <span class="icon"><i class="fa fa-home"></i></span>
-                        <span class="item">Home</span>
+                        <span class="item">Dashboard</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('admin/bulletin' , 'achievements') }}">
-                        <span class="icon"><i class="fa fa-address-book"></i></span>
+                        <span class="icon"><i class="fa fa-book"></i></span>
                         <span class="item">Achievements</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('admin/bulletin' , 'announcements') }}">
-                        <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        <span class="icon"><i class="fa fa-book"></i></span>
                         <span class="item">Announcements</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('admin/bulletin' , 'news') }}">
-                        <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                        <span class="icon"><i class="fa fa-book"></i></span>
                         <span class="item">News</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('admin/bulletin' , 'upcoming_events') }}">
-                        <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                        <span class="icon"><i class="fa fa-book"></i></span>
                         <span class="item">Upcoming Events</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><i class="fa fa-book"></i></span>
-                        <span class="item">Subject</span>
+                    <a href="{{ route('pages' , 'poll') }}">
+                        <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                        <span class="item">Poll</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/contact">
+                    <a href="{{ route('pages' , 'feedback') }}">
                         <span class="icon"><i class="fa fa-user"></i></span>
                         <span class="item">Feedback</span>
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('profile.show') }}">
+                        <span class="icon"><i class="fa fa-user"></i></span>
+                        <span class="item">User Profile</span>
+                    </a>
+                </li>
+                <li>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
-                        <button type="submit">
+            <a href="#"><i class="fa fa-user" aria-hidden="true">Logout</i>
+                        {{-- <button type="submit">
                             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                             <span class="item">Logout</span>
-                        </button>
+                        </button> --}}
                     </form>
                 </li>
-             
             </ul>
         </div>
     </div>

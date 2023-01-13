@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ url('css/index.css') }}">
     <link rel="stylesheet" href="{{ url('css/js/calendar.css') }}">
     <title>Speaker Eugenio Perez National Agricultural School</title>
-    @vite('resources/css/app.css')
 </head>
 @extends('Components.Molecule.header')
 @section('footer')
@@ -24,33 +23,33 @@
            <!-- Carousel items -->
            <div class="carousel-inner">
                <div class="item active">
-                   <img src="https://static.wixstatic.com/media/61cf76_0b32268249ac4dccbaa65611a6e3aef7~mv2.jpg/v1/fill/w_980,h_420,q_90/61cf76_0b32268249ac4dccbaa65611a6e3aef7~mv2.jpg" alt="First Slide">
+                   <img src="{{ url("../images/sepnas.jpg") }}" alt="First Slide">
                    <div class="carousel-caption">
                        <h3>SEPNAS is a home of every SEPNASIAN! Once a SEPNASIAN,  always a SEPNASIAN!</h3>
                    </div>
                </div>
                <div class="item">
-                 <img src="https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?b=1&k=20&m=517188688&s=612x612&w=0&h=x8h70-SXuizg3dcqN4oVe9idppdt8FUVeBFemfaMU7w=" alt="First Slide">
+                 <img src="{{ url("../images/academic.jpg") }}" alt="First Slide">
                  <div class="carousel-caption">
                      <h3>Academic Excellence Awards for Grades 7 to 9 and Grade 11</h3>
                  </div>
              </div>
                <div class="item">
-                   <img src="https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?b=1&k=20&m=517188688&s=612x612&w=0&h=x8h70-SXuizg3dcqN4oVe9idppdt8FUVeBFemfaMU7w=" alt="Second Slide">
+                   <img src="{{ url("../images/brigada.jpg") }}" alt="Second Slide">
                    <div class="carousel-caption">
                        <h3>DAY 1 of Brigada Eskwela :Parade</h3>
                        </div>
                    </div>
                    <div class="item">
-                       <img src="https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?b=1&k=20&m=517188688&s=612x612&w=0&h=x8h70-SXuizg3dcqN4oVe9idppdt8FUVeBFemfaMU7w=" alt="Third Slide">
+                       <img src="{{ url("../images/soiree.jpg") }}" alt="Third Slide">
                        <div class="carousel-caption">
                            <h3>Soiree 2K20</h3>
                        </div>
                    </div>
                    <div class="item">
-                     <img src="https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?b=1&k=20&m=517188688&s=612x612&w=0&h=x8h70-SXuizg3dcqN4oVe9idppdt8FUVeBFemfaMU7w=" alt="Third Slide">
+                     <img src="{{ url("../images/sosa.jpg") }}" alt="Third Slide">
                      <div class="carousel-caption">
-                         <h3>SOSA 2019 - State of the School Address<</h3>
+                         <h3>SOSA 2019 - State of the School Address</h3>
                      </div>
                  </div>
                </div>
@@ -67,26 +66,27 @@
     <div class="container2"> 
         <div class="container2_box">
           <span class="title">Announcement</span>
-          <img src="{{ URL::asset('images/'.$announcement->thumbnailImage) }}" alt="">
+          <img src="{{ URL::asset('images/Admin/Bulletin/Announcements/'.$announcement->thumbnailImage) }}" alt="">
           <h3>Title: {{ $announcement->title }}</h3>
           <p>Description: {{ $announcement->shortDescription }}</p>
-          <p>Date Uploaded: {{ $announcement->created_at }}</p>
-          <a href="announcements.php" title="See Announcements">See All</a>
+          <p>Date Uploaded:{{ date('F j, Y, g:i a', strtotime($announcement->created_at)) }}</p>
+          <a href="{{ route('bulletin' , 'announcements') }}" title="See Announcements">See All</a>
         </div>
         <div class="container2_box">
         <span class="title">Achievement</span>
-          <img src="{{ URL::asset('images/Admin/Bulletin/Achievement/'.$achievement->thumbnailImage) }}" alt="">
+          <img src="{{ URL::asset('images/Admin/Bulletin/Achievements/'.$achievement->thumbnailImage) }}" alt="">
           <h3>Title: {{ $achievement->title }}</h3>
           <p>Description: {{ $achievement->shortDescription }}</p>
-          <p>Date Uploaded: {{ $achievement->created_at }}</p>
-        <a href="achievement.php" title="See Achievements">See All</a>
+          <p>Date Uploaded: {{ date('F j, Y, g:i a', strtotime($achievement->created_at)) }}</p>
+        <a href="{{ route('bulletin' , 'achievements') }}" title="See Achievements">See All</a>
           </div>
           <div class="container2_box">
-          <span class="title">Upcoming Events</span>
-          <img src="https://www.riotgames.com/darkroom/1440/d0807e131a84f2e42c7a303bda672789:3d02afa7e0bfb75f645d97467765b24c/valorant-offwhitelaunch-keyart.jpg" alt="">
-          <p>Title: Sample Text</p>
-          <p>Title: Sample Text</p>
-          <a href="upcoming_events.php" title="See Upcoming Events">See All</a>    
+            <span class="title">Upcoming Events</span>
+            <img src="{{ URL::asset('images/Admin/Bulletin/Upcoming_events/'.$event->thumbnailImage) }}" alt="">
+            <h3>Title: {{ $event->title }}</h3>
+            <p>Description: {{ $event->shortDescription }}</p>
+            <p>Date Uploaded: {{ date('F j, Y, g:i a', strtotime($event->created_at)) }}</p>
+          <a href="{{ route('bulletin' , 'upcoming_events') }}" title="See Achievements">See All</a>
       </div>
     </div> 
     <!--End Container2-->
@@ -151,23 +151,23 @@
           
             <div class="news">
             <span>News</span>
-                     <div class=data_feedback> 
-                      @foreach ($news as $news)
+            @foreach ($news as $news)
+                     <div class="data_feedback" > 
                       <img src="{{ URL::asset('images/Admin/Bulletin/News/'.$news->thumbnailImage) }}" alt="">
-                      <div>
+                      <div style="">
                         <h3>Title: {{ $news->title }}</h3>
                         <p>Description: {{ $news->shortDescription }}</p>
-                        <p>Date Uploaded: {{ $news->created_at }}</p>
-                        <a href="announcement.php">See More >></a>
-                      </div>  
-                      @endforeach       
+                        <p>Date Uploaded: {{ date('F j, Y, g:i a', strtotime($news->created_at)) }}</p>
+                        <a href="{{ route('bulletin' , 'news') }}">See More >></a>
+                      </div>         
                  </div>
+                 @endforeach
               <!-- <span> See All >> </span> -->
             </div>       
       <!--	  <a class="slider_btn" href="AboutUs-single.html">Read More</a>-->  
     </div>
 
-    <img src="images/Images/front.png" alt="" style="width:100%; height:300px;">
+    <img src="{{ url("../images/front.png") }}" alt="" style="width:100%; height:300px;">
     <div class="container_choose">
         <!-- Why us top titile -->
             <div class="title_area">
@@ -256,7 +256,7 @@
                         </div>
                     </div>
                 </div>
-  <a href="calendar.php"> <i class="fa fa-search"></i>&nbsp;See Complete Calendar</a>
+  <a href="{{ route('aboutus' , 'calendar') }}"> <i class="fa fa-search"></i>&nbsp;See Complete Calendar</a>
     
                 <div class="month-list"></div>
             </div>
@@ -265,8 +265,8 @@
                   <div class="row">
                          <div class="col-lg-12 col-md-12"> 
                            <div class="title_area">
-                           <form action="contactUsSubmit.php" method="POST">
-                            @csrf
+                           <form action="" id="form">
+                            <input type="hidden" id="csrf" value={{ csrf_token() }}>
                      <h2 class="title">Contact us</h2>
                      <span></span>
                              <h5>We are eager to discuss and answer any questions you have. Enter your details and we'll get back to you shortly.</h5>
@@ -304,13 +304,11 @@
                
                    <button class="button-success pure-button button-xlarge">
                      <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
-                     <?php if (isset($_GET['success'])) { ?>
-                    <p class="success_contact"><?php echo $_GET['success']; 
-                    echo '<script>alert("Your Form Sent Successfully")</script>'?></p>
-                     <?php } ?>
                
                    <!--=========== END CONTACT SECTION ================-->
-                    
+                   <div class="alert alert-success" role="alert" id="successMsg" style="display: none ; margin-top : 5px;" >
+                    Thank you for getting in touch! 
+                  </div>
                    </em></em></form>
         </div>
     </div>      
@@ -320,7 +318,58 @@
         </style><a href="https://www.embedgooglemap.net"></a>
         <style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:100%;}</style></div></div>
       </div>
+                        {{-- <span class="icon"><i class="fa fa-bar-chart"></i></span> --}}
+      <button class='open-button' onclick="document.location='{{ route('poll.show', [$polls->id]) }}'"><h4>Poll</h4><i class="fa fa-bar-chart"></i></button>
       <script type="text/javascript" src="js/calendar.js"></script>
+      <script>
+               function validateForm()
+{
+              var name = $("input[name=name]").val();
+              var subject = $("input[name=subject]").val();
+              var message = $("textarea[name=message]").val();
+              var email = $("input[name=email]").val();
+              var recipient = $("select[name=recipient]").val();
+              var url = '{{ url('contactus/store') }}';
+    if (name==null || name=="",subject==null || subject=="",message==null || message=="",email==null || email=="")
+    {
+        alert("Please Fill All Required Field");
+        return false;
+    }
+    else{
+
+      $.ajax({
+                      url: "/admin/contact",
+                      type: "POST",
+            data:{
+                _token: $("#csrf").val(),
+                name:name, 
+                subject:subject,
+                message:message,
+                email:email,
+                recipient:recipient
+                },
+                      cache: false,
+                      success: function(dataResult){
+                          var dataResponse = JSON.stringify(dataResult);
+                          if(dataResult.success == true){
+                            $('#successMsg').show();	
+                          }
+                          else if(dataResult.success != true){
+                              alert("Error occured !");
+                          }     
+                      }
+                  });
+
+    }
+}
+
+  $(function () {
+    $('#form').on('submit', function (e) {
+      e.preventDefault();
+      validateForm();
+    });
+  });
+      </script>
       @extends('Components.Molecule.footer')
       @section('footer')
       @endsection

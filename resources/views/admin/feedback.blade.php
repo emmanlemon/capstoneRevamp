@@ -12,7 +12,7 @@
     @section('navigator_side')
     @endsection
     <div class="section">
-            @foreach ($contact as $feedback)
+        @foreach ($contact as $feedback)
             <div class="container_feedback">
                 <p>Name: {{ $feedback->name }}</p>
                 <p>Subject: {{ $feedback->subject }}</p>

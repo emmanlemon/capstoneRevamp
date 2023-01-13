@@ -9,7 +9,6 @@ class Achievement extends Model
 {
     use HasFactory;
     protected $table = 'achievements';
-    protected $dates = ['name_field'];
     public $timestamps = true;
     protected $fillable = [
         'name','title','shortDescription','fullDescription','header','thumbnailImage','fullImage'
