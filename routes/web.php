@@ -24,9 +24,11 @@ use App\Http\Controllers\Admin\PollController;
 */
 
 Route::middleware([
+    'auth' ,
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'isAdmin'
 ])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home.admin');
     Route::get('/admin/{pages}' , [PagesController::class , 'index'])->name('pages');

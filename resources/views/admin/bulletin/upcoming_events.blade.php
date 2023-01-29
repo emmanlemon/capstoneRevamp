@@ -10,7 +10,7 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ url("../images/sepnas_logo.png") }}" />
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <title>Admin Achievements</title>
+    <title>Admin Upcoming Events</title>
 </head>
 <body>
     @extends('admin.extension.navigator_side')
@@ -29,17 +29,17 @@
       @elseif(Session::has('delete'))
       <div class="alert alert-danger">{{ Session::get('delete') }}</div>
       @endif
-      @foreach ($bulletinNav as $achievement)
+      @foreach ($bulletinNav as $event)
       <div class="data_feedback"> 
-        <img src="{{ URL::asset('images/Admin/Bulletin/Upcoming_events/'.$achievement->thumbnailImage) }}" alt="">
+        <img src="{{ URL::asset('images/Admin/Bulletin/Upcoming_events/'.$event->thumbnailImage) }}" alt="">
           <div class="data_container">
-            <p>Title: {{ $achievement->title }}</p>
-            <p>Description: {{ $achievement->shortDescription }}</p> 
-            <p>Time Uploaded: {{ $achievement->created_at }} </p>
+            <p>Title: {{ $event->title }}</p>
+            <p>Description: {{ $event->shortDescription }}</p> 
+            <p>Time Uploaded: {{ $event->created_at }} </p>
           </div>
           
         <div class="deleteButton">
-          <form action="{{ url('bulletin/achievements', ['id' => $achievement->id]) }}" method="post">
+          <form action='{{ route('delete' , "upcoming_events/$event->id") }}' method="post">
             <input class="btn btn-default" type="submit" value="Delete" />
             @method('delete')
             @csrf
@@ -61,9 +61,9 @@
       var header = $("input[name=header]").val();
       var thumbnailImage = $("input[type=file][name=thumbnailImage]").val();
       var fullImage = $("input[type=file][name=fullImage]").val();
-      var url = '{{ url('bulletin/achievements') }}';
+      var url = '{{ url('bulletin/events') }}';
           $.ajax({
-              url: "/bulletin/achievements",
+              url: "/bulletin/events",
               type: "POST",
               headers: {
                 'X-CSRF-TOKEN' : $('input[name="_token"]').val()

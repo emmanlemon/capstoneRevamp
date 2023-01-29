@@ -37,11 +37,11 @@ class HomeController extends Controller
         
         $user = Auth::user();
         $role = Auth::user()->role;
-        if(Auth::user()->role === null)
+        if($role === null)
         {
             return view('index');
         }
-        elseif($role === "0")
+        elseif($role == "0")
         {
             $user = Auth::user();
             $achievements = DB::table('achievements')->latest()->first();

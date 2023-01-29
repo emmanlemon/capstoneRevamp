@@ -61,11 +61,11 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
-            <a href="#"><i class="fa fa-user" aria-hidden="true">Logout</i>
-                        {{-- <button type="submit">
+            {{-- <a href="#"><i class="fa fa-user" aria-hidden="true">Logout</i> --}}
+                        <button type="submit">
                             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                             <span class="item">Logout</span>
-                        </button> --}}
+                        </button>
                     </form>
                 </li>
             </ul>

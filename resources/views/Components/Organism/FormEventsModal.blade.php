@@ -30,7 +30,7 @@
     
           <div class="form-group">
             <label>Header:</label>
-            <input type="text" name="header" class="form-control" placeholder="Enter Header">
+            <input type="text" name="header" class="form-control" placeholder="Enter Link (Optional)">
           </div>
           <div class="form-group">
             <label for="date">Date:</label>

@@ -29,8 +29,8 @@
           </div>
     
           <div class="form-group">
-            <label>Header:</label>
-            <input type="text" name="header" class="form-control" placeholder="Enter Header">
+            <label>Link:</label>
+            <input type="text" name="header" class="form-control" placeholder="Enter Link (Optional)">
           </div>
       
           <div class="form-group">

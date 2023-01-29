@@ -46,7 +46,7 @@ class BulletinController extends Controller
           ]);
           if ($request == true) {
     
-            $input = $request->except(['_token' , 'page']);
+            $input = $request->except(['_token' , 'page' , 'save']);
             $input['thumbnailImage'] = $request->thumbnailImage->getClientOriginalName();
             $input['fullImage'] = $request->fullImage->getClientOriginalName();
             $request->thumbnailImage->move(public_path('images/Admin/Bulletin/'.ucfirst($bulletin)), $input['thumbnailImage']);

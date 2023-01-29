@@ -26,7 +26,7 @@
     <div class="card" id="initiated">
       @if(@empty($bulletinId))
       @foreach ($bulletinData as $event)
-      <img src="{{ URL::asset('images/Admin/Bulletin/Achievements/'.$event->thumbnailImage) }}" alt="">
+      <img src="{{ URL::asset('images/Admin/Bulletin/Upcoming_events/'.$event->thumbnailImage) }}" alt="">
       <h2>{{ $event->title }}</h2>
       <p>Description: {{ $event->shortDescription }}</p> 
       <p>Time Uploaded: {{ date('F j, Y, g:i a', strtotime($event->created_at)) }} , {{ \Carbon\Carbon::parse($event->created_at)->diffForHumans() }}</p>

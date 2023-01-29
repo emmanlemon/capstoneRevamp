@@ -44,7 +44,12 @@
                     <td>  <input name="option_id" type="radio" value="{{$option->id}}" @if ($selectedOption == $option->id) checked @endif /> {{$option->content}}</td>
                     <td>{{ $option->votes_count }}</td>
                     {{-- <td><progress value="{{ intval($option->votes_count  * 100/ $poll->options->sum('votes_count'))}}" max="100"> 32% </progress></td> --}}
+                    @if ($option->votes_count == 0) 
+                    <td>0%</td>
+                    @else
                     <td>{{ intval($option->votes_count  * 100/ $poll->options->sum('votes_count'))}}%</td>
+                    @endif
+                    
                   </tr>
                 @endforeach
             </table> 

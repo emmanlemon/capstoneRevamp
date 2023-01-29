@@ -36,11 +36,15 @@
       {{ $bulletinData->links('pagination::bootstrap-4') }}
     </div>  
     @else
-    <img src="{{ URL::asset('images/Admin/Bulletin/Announcements/'.$bulletinId->thumbnailImage) }}" alt="">
+    <img src="{{ URL::asset('images/Admin/Bulletin/Achievements/'.$bulletinId->thumbnailImage) }}" alt="">
     <h2>{{ $bulletinId->title }}</h2>
     <p>Description: {{ $bulletinId->shortDescription }}</p> 
     <p>Full Description: {{ $bulletinId->fullDescription }}</p> 
     <p>Time Uploaded: {{ $bulletinId->created_at }} </p>
+    @if(empty($bulletinId->link))
+    @else
+    <p>Link -> <a href="{{ $bulletinId->link }}" target="_blank">{{ $bulletinId->link }}</a></p>
+    @endif
       <!-- Comment -->
       <div class="flex-grow-1 flex-shrink-1">
         <h3> New Comment</h3>
@@ -55,7 +59,7 @@
           <input type="hidden" name="updated_at" value="{{ date("Y/m/d H:i:s");  }}">
           <textarea name="comment" required id="" cols="" rows="5" style="width: 100%;" placeholder="Write something ..."></textarea>
           <div style="float: right;">
-            <button class="button" name="save">Submit</button>
+            <button class="button">Submit</button>
             <button type="reset" class="button">Reset</button>
           </div>
         </form>   
@@ -70,10 +74,10 @@
             <div class="media-body">
               <h4 class="media-heading"> {{ $comment->name }} <span class="small">- {{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</span></h4>
               <p> {{ $comment->comment }}
-                @if(empty($user))
+                {{-- @if(empty($user))
                 @elseif ($user->id == $comment->user_id)
                   <i>EDIT</i>
-                @endif
+                @endif --}}
               </p>
           </div>
       </div>
