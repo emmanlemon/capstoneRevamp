@@ -11,7 +11,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="{{ route('pages' , 'dashboard') }}">
+                    <a href="{{ route('home.admin') }}"
                         <span class="icon"><i class="fa fa-home"></i></span>
                         <span class="item">Dashboard</span>
                     </a>

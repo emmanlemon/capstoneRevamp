@@ -19,7 +19,6 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -38,25 +37,23 @@ class BulletinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , $bulletin )
+    public function store(Request $request, $bulletin)
     {
         $request->validate([
             'thumbnailImage' => 'required|max:2048',
             'fullImage' => 'required|max:2048',
           ]);
-          if ($request == true) {
-    
+        if ($request == true) {
             $input = $request->except(['_token' , 'page' , 'save']);
             $input['thumbnailImage'] = $request->thumbnailImage->getClientOriginalName();
             $input['fullImage'] = $request->fullImage->getClientOriginalName();
             $request->thumbnailImage->move(public_path('images/Admin/Bulletin/'.ucfirst($bulletin)), $input['thumbnailImage']);
             $request->fullImage->move(public_path('images/Admin/Bulletin/'.ucfirst($bulletin)), $input['fullImage']);
             $sample = DB::table($bulletin)->insert($input);
-            return redirect()->back()->with('success', ucfirst($bulletin).' Post Added Successfully'); 
-
+            return redirect()->back()->with('success', ucfirst($bulletin).' Post Added Successfully');
         }
-    
-          return response()->json(['error'=>$request->errors()->all()]);
+
+        return response()->json(['error'=>$request->errors()->all()]);
     }
 
     /**
@@ -67,9 +64,8 @@ class BulletinController extends Controller
      */
     public function show($bulletin)
     {
-
         $bulletinNav = DB::table($bulletin)->latest()->paginate(5);
-        return view('admin.bulletin.'.$bulletin , compact('bulletinNav'));
+        return view('admin.bulletin.'.$bulletin, compact('bulletinNav'));
     }
 
     /**
@@ -104,7 +100,6 @@ class BulletinController extends Controller
     public function destroy($bulletin, $id = null)
     {
         DB::table($bulletin)->where('id', $id)->delete();
-        return back()->with('delete', ucfirst($bulletin).' Post Deleted Successfully');   
+        return back()->with('delete', ucfirst($bulletin).' Post Deleted Successfully');
     }
-    
 }

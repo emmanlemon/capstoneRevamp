@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use App\Models\Contact;
 use Carbon\Carbon;
@@ -43,6 +44,19 @@ class ContactController extends Controller
     public function store(Request $request)
     {
          Contact::create($request->all());
+
+         $message = <<<EOT
+         Subject: {$request->subject}
+         Message: {$request->message}
+         Email: {$request->email}
+         Recipient: {$request->recipient}
+         EOT;
+ 
+         Http::post('https://discord.com/api/webhooks/1081126489141035028/I6bLN4bWmkFramdngrNIRtldmD1O6pR8TFpb7iPaZ160rXnzxHMwiJayerCoJB8ceoyg', [
+            'username' => $request->name, 
+            'content' => $message
+         ]);
+
          return response()->json(['success' => true,
                 'messages' => 'Data inserted successfully',
                 'statusCode' => 200]

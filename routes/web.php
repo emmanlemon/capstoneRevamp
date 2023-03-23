@@ -32,7 +32,11 @@ Route::middleware([
 ])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home.admin');
     Route::get('/admin/{pages}' , [PagesController::class , 'index'])->name('pages');
-    Route::get('/admin/poll/create/{poll?}' , [PollController::class, 'show'])->name('poll');
+    Route::get('/admin/poll/show/{poll}' , [PollController::class, 'showPoll']);
+    Route::post('/admin/poll/create' , [PollController::class, 'store'])->name('poll.create');
+    Route::delete('/admin/poll/delete/{id?}' , [PollController::class , 'destroy']);
+    Route::get('/admin/poll/print/{poll}' , [PollController::class , 'printPoll']);
+    Route::put('/admin/poll/update/{poll}' , [PollController::class , 'update']);
     Route::resource('/admin/bulletin', BulletinController::class);
     Route::post('/admin/bulletin/{bulletin}', [BulletinController::class , 'store']);
     Route::delete('/admin/bulletin/{bulletin}/{id?}' , [BulletinController::class , 'destroy'])->name('delete');

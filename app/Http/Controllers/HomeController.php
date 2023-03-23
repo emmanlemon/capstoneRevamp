@@ -61,7 +61,20 @@ class HomeController extends Controller
         }
         else
         {
-            return redirect('/admin/dashboard');
+            $user = DB::table('users')->count();
+            $feedback = DB::table('contacts')->count();
+            $achievement = DB::table('achievements')->count();
+            $announcement = DB::table('announcements')->count();
+            $poll = DB::table('polls')->count();    
+            $event = DB::table('upcoming_events')->count();    
+            $news = DB::table('news')->count();
+            return view('admin.dashboard' ,compact('achievement',
+            'announcement',
+            'news',
+            'event',
+            'poll' ,
+            'feedback',
+            'user'));
         }
     }
 

@@ -13,8 +13,8 @@
         <div class="mt-3 col-md-6 mt-md-0" style="background-color:rgba(0, 128, 0, 0.729);">
   
           <!-- Content -->
-          <h5 class="text-uppercase">Speaker Eugenio Perez National Agricultural School</h5>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt id, illum nemo placeat pariatur consequuntur qui nam omnis cum explicabo fugit earum quaerat doloribus. Ad repudiandae quae dolor temporibus tenetur?</p>
+          <h5 class="text-uppercase mt-6" style="">Speaker Eugenio Perez National Agricultural School</h5>
+          {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt id, illum nemo placeat pariatur consequuntur qui nam omnis cum explicabo fugit earum quaerat doloribus. Ad repudiandae quae dolor temporibus tenetur?</p> --}}
           <div class="icons" style="gap: 1em;">
             <a href="https://www.facebook.com/scc.sepnas"><i class="fa fa-facebook-square" style="font-size:30px; color:white"></i></a>
             <i class="fa fa-instagram" style="font-size:30px; color:white"></i>

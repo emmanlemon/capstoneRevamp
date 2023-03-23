@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -54,11 +55,10 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {   
-        // DB::table('polls')->select(array('id' => $request));
-        // dd($request->all());
-        // $poll = Poll::create($request->except('options' , '_token'));
-        // $poll->options()->createMany($request->options);
-        
+        DB::table('polls')->select(array('id' => $request));
+        $poll = Poll::create($request->except('options' , '_token'));
+        $poll->options()->createMany($request->options);
+        return redirect()->back()->with('success', 'Poll Added Successfully'); 
     }
 
     /**
@@ -79,6 +79,12 @@ class PollController extends Controller
         //
     }
 
+    public function showPoll(Poll $poll)
+    {
+        $poll = $poll->load('options');
+        return view('admin.showPoll' , compact('poll'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -86,9 +92,19 @@ class PollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Poll $poll)
     {
-        //
+        $poll->title = $request->title;
+        $poll->status = $request->status;
+        foreach ($request->pollId as $key => $value) {
+            $data = [             
+                'content' => $request->options[$key],
+            ];         
+            Option::where('id',$request->pollId[$key])
+            ->update($data); 
+        }
+        $poll->save();
+        return back()->with('update', 'Poll Update Successfully');
     }
 
     /**
@@ -97,16 +113,23 @@ class PollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Poll $poll)
     {
-        //
+        $poll->options()->delete();
+        $poll->delete();
+        return back()->with('delete', 'Poll Deleted Successfully');
+    }
+
+    public function printPoll(Poll $poll){
+        $poll = $poll->load('options');
+        return view('admin.print.printPoll' , compact('poll'));
     }
 
     public function show(Poll $poll)
     {
         $poll = $poll->load('options');
      
-        $selectedOption = $poll->votes()->where('user_id', auth()->id())->first()?->option_id;
+        $selectedOption = $poll->votes()->where('user_id', auth()->id())->orderBy('created_at', 'DESC')->first()?->option_id;
        
         if ($poll->is(auth()->user())) {
             return view('poll', compact('poll' ,'selectedOption'));

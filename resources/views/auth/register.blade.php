@@ -14,7 +14,7 @@
                 <a href="/" title="Home"><img src="{{ url("../images/sepnas_logo.png") }}"></a>
             </x-slot>
             <div style="display: grid; place-items:center; padding: 5px; font-weight:bold;">
-                <h2>Speaker Eugenio Perez National Agriculture School</h2>
+                <h2 style="text-align:center;">Speaker Eugenio Perez National Agriculture School</h2>
                 <p>Sign Up</p>
             </div>
             <x-jet-validation-errors class="mb-4" />

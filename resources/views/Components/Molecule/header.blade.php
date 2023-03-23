@@ -63,7 +63,7 @@
                         <a class="dropdown-item" href="{{ route('profile.show') }}">User Profile</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" style="background-color: red;  color: white;">
+                            <button type="submit">
                                 <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                                 <span class="item" style="font-size: 1em;">Logout</span>
                             </button>

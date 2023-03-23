@@ -82,9 +82,9 @@
                 <p>Tel nos. (075) 523 0562  
                   (075) 955 5258
                   <br> Fax No.: (+6375) 203 – 0333</p>
-                <p>Email:&nbsp; 300388@deped.gov.ph<br>
-                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; registrar@vmuf.edu.ph<br>
-                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; businessoffice@vmuf.edu.ph
+                <p>Email:&nbsp; 300388@sepnas.gov.ph<br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; registrar@sepnas.edu.ph<br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; businessoffice@sepnas.edu.ph
                 </p>
               </div>
               <div class="address_group">

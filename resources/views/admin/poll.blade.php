@@ -19,59 +19,66 @@
     @section('navigator_side')
     @endsection
   <div class="section">
-  {{-- <button onclick="document.getElementById('id01').style.display='block'" type="button" class="btn btn-info" >+ Add Poll</button>
-  @extends('Components.Organism.PollModalCreate')
-  @section('PollModal') --}}
-  <form action="{{ route('poll') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-     <div class="col s4">
-         <label for="title"> Title </label>
-         <input name="title" id="title" type="text" class="validated">
-     </div>
-     {{-- <input type="dateTime-local" name="start_at"> Start
-     <input type="dateTime-local" name="end_at"> End --}}
-     <div class="row col s12" x-data = "{optionsNumber:2}">
-         <h4>Options</h4>
-         <template x-for="i in optionsNumber">
-             <div class="col ">
-                 <input type="text" name="options[][content]">
-                 <button x-on:click="optionsNumber > 2 ? optionsNumber-- : alert('poll must has at least 2 options')" type="button" class="btn btn-info">
-                     Remove
-                 </button>
-             </div>
-         </template>
-         <button x-on:click="optionsNumber++" type="button" class="btn btn-info"> Add Button </button>
-         <button type="submit" id="save" type="button" class="btn btn-info"> Submit</button>
-         <button type="reset" name="reset" type="button" class="btn btn-danger"> Reset</button>
- </form>
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Created_at</th>
-        <th>Action</th>
-      </tr>
-      @foreach ($polls as $poll)
-      <tr>
-        <td>
-          {{ $poll->title }}
-        </td>
-        <td>
-          {{ $poll->status }}
-        </td>
-        <td>
-          {{ $poll->created_at }}
-        </td>
-        <td>
-          <a href="" class="btn btn-success">Edit</a>
-          <a href="" class="btn btn-danger" style="background-color:red;">Delete</a>
-        </td>
-        
-      </tr>
-      @endforeach
-    </table>
-  
-    
+    <div class="container-poll" style="margin: 20px;">
+      <h5>Home > Poll</h5>
+      @if(Session::has('success'))
+      <div class="alert alert-success">{{ Session::get('success') }}</div>
+      @elseif(Session::has('delete'))
+      <div class="alert alert-danger">{{ Session::get('delete') }}</div>
+      @endif
+      <form action="{{ url('/admin/poll/create') }}" method="POST">
+        @csrf
+         <div class="col s4">
+             <label for="title"> Title </label>
+             <input name="title" id="title" type="text" class="validated">
+         </div>
+         {{-- <input type="dateTime-local" name="start_at"> Start
+         <input type="dateTime-local" name="end_at"> End --}}
+         <div class="row col s12" x-data = "{optionsNumber:2}">
+             <h4>Options</h4>
+             <template x-for="i in optionsNumber">
+                 <div class="col ">
+                     <input type="text" name="options[][content]">
+                     <button x-on:click="optionsNumber > 2 ? optionsNumber-- : alert('poll must has at least 2 options')" type="button" class="btn btn-info">
+                         Remove
+                     </button>
+                 </div>
+             </template>
+             <button x-on:click="optionsNumber++" type="button" class="btn btn-info"> Add Button </button>
+             <button type="submit" id="save" type="button" class="btn btn-info"> Submit</button>
+             <button type="reset" name="reset" type="button" class="btn btn-danger"> Reset</button>
+     </form>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Created_at</th>
+            <th>Action</th>
+          </tr>
+          @foreach ($polls as $poll)
+          <tr>
+            <td>
+              {{ $poll->title }}
+            </td>
+            <td>
+              {{ $poll->status }}
+            </td>
+            <td>
+              {{ date('F j, Y, g:i a', strtotime($poll->created_at)) }} , {{ \Carbon\Carbon::parse($poll->created_at)->diffForHumans() }}
+            </td>
+            <td style="display: flex; gap: .5em;">
+              <a href="{{ url("admin/poll/show/$poll->id")}}" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+              <form action='{{ url("admin/poll/delete/$poll->id")}}' method="post">
+                <input class="btn btn-danger" type="submit" value="Delete" style="background-color: rgb(255, 58, 58);" />
+                @method('delete')
+                @csrf
+              </form>
+            </td>
+            
+          </tr>
+          @endforeach
+        </table>
+    </div>
   </div>
   <script>
     $(document).ready(function() {

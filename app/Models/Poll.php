@@ -14,7 +14,7 @@ class Poll extends Model
         'title','start_at','end_at'
     ];
     public function options(){
-        return $this->hasMany(Option::class);
+        return $this->hasMany(Option::class , 'poll_id');
     }
     public function user()
     {
